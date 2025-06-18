@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Cloud Storage</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="logout-form">
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+
+    <h2>Welcome, {{ request.user.username }}</h2>
+
+    <div class="file-list">
+        {% for file in files %}
+            <div class="file-item">
+                <a href="{{ file.file.url }}" target="_blank">
+                    {{ file.file.name|cut:"user_files/" }}
+                </a>
+                <span>{{ file.uploaded_at|date:"Y-m-d H:i" }}</span>
+                <a href="{{ file.file.url }}" download class="download-btn">⬇️</a>
+                <a href="{% url 'delete_file' file.id %}" class="delete-btn">❌</a>
+            </div>
+        {% empty %}
+            <p>No files uploaded yet.</p>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'upload' %}">Upload New File</a>
+</div>
+</body>
+</html>

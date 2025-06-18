@@ -1,0 +1,21 @@
+Cloud name	dnc6srnfv
+API key	196663158171917
+API secret	IcgVOETJoVs4grezlzz9tV7jdnE
+API environment variable	CLOUDINARY_URL=cloudinary://196663158171917:IcgVOETJoVs4grezlzz9tV7jdnE@dnc6srnfv
+
+python manage.py createsuperuser
+python manage.py runserver
+
+cd C:\Users\Admin\Desktop\virtualcloud
+py -3.10 -m venv venv
+venv\Scripts\activate
+
+pip install cloudinary django-cloudinary-storage
+
+git init
+git add .
+git commit -m "initial"
+git branch -M main
+git remote add origin https://github.com/My-Lab_214/virtualcloud.git
+git push -u origin main
+

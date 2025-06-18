@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: mycloud
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn mycloud.wsgi
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: mycloud.settings
+      - key: SECRET_KEY
+        generateValue: true
